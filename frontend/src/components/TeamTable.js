@@ -62,7 +62,7 @@ const TeamTable = () => {
   const fetchMembers = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8080/v1/members?limit=${itemsPerPage}&offset=${(currentPage - 1) * itemsPerPage}`, {
+      const response = await fetch(`${process.env.REACT_APP_API}members?limit=${itemsPerPage}&offset=${(currentPage - 1) * itemsPerPage}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ const TeamTable = () => {
       console.log(95, memberId)
       setLoading(true);
       // Call API to delete the member
-      const response = await fetch(`http://localhost:8080/v1/members/${memberId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API}members/${memberId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ const TeamTable = () => {
     try {
       console.log(95, event);
       // Call API to delete selected members
-      const response = await fetch('http://localhost:8080/v1/members', {
+      const response = await fetch('${process.env.REACT_APP_API}members', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ const TeamTable = () => {
     // Assuming members is a state, you would set it here. Adjust as necessary.
     setIsEditModalOpen(false);
     console.log(updatedUser)
-    const res = await fetch(`http://localhost:8080/v1/members/${updatedUser.id}/edit`, {
+    const res = await fetch(`${process.env.REACT_APP_API}members/${updatedUser.id}/edit`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
