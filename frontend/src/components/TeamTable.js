@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import TeamTableRow from './TeamTableRow';
 import { GoQuestion } from 'react-icons/go';
 import { BiDownArrowAlt } from 'react-icons/bi';
+import { FaArrowRight , FaArrowLeft } from "react-icons/fa6";
+
 import { useLocation, useNavigate } from 'react-router-dom';
 import DeleteConfirmation from './DeleteConfirmation';
 import Toast from './Toast';
@@ -88,6 +90,7 @@ const TeamTable = () => {
   };
 
   const handleDeleteSelected = () => {
+    console.log(91)
     setIsModalOpen(true);
   };
   const handleDeleteMember = async (memberId) => {
@@ -173,6 +176,8 @@ const TeamTable = () => {
           <button
             className="bg-purple-600 text-white py-1 px-3 rounded-md focus:outline-none ml-auto"
             onClick={handleDeleteSelected}
+            disabled={selectedMembers.length === 0} // Disable button when no members are selected
+          
           >
             Delete selected
           </button>
@@ -215,7 +220,7 @@ const TeamTable = () => {
               className="bg-gray-200 py-1 px-2 rounded-md focus:outline-none"
               onClick={() => currentPage > 1 && updatePage(currentPage - 1)}
             >
-              Previous
+              <FaArrowLeft className='inline-block mx-2 items-center mr-1'/>Previous
             </button>
             <div className="flex flex-1 items-center justify-center self-center px-14 md:px-5 sm:self-stretch sm:px-4">
               {renderPageNumbers(currentPage, totalPages, updatePage)}
@@ -224,7 +229,7 @@ const TeamTable = () => {
               className="bg-gray-200 py-1 px-2 rounded-md ml-2 focus:outline-none"
               onClick={() => currentPage < totalPages && updatePage(currentPage + 1)}
             >
-              Next
+              <FaArrowRight className='inline-block mx-2 items-center mr-1'/>Next
             </button>
           </div>
         </div>

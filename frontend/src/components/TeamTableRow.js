@@ -82,7 +82,7 @@ const TeamTableRow = ({ member, onDelete, onEdit, onSelect, isSelected }) => {
         {displayedTeams.map((team, index) => (
           <span
             key={index}
-            className={`text-xs font-semibold mr-2 mb-1 px-2.5 py-0.5 rounded-full ${getColorClasses(
+            className={`text-xs font-semibold mr-2 mb-1 px-2.5 py-1 rounded-full ${getColorClasses(
               team
             )}`}
           >
