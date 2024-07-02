@@ -3,7 +3,7 @@ import { createMemebers, deleteSelectedMembers, deleteMembers, getMembers, getMe
 
 interface CustomError extends Error {
   status?: number;
-  message?: string;
+  message: string;
 }
 
 export async function addMember(req: Request, res: Response) {

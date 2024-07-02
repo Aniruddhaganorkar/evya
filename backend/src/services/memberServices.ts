@@ -4,11 +4,11 @@ import { IMember } from '../utils/interface.js';
 
 function validateMembers(member: Partial<IMember>) {
     const errorMessage = []
-    if(member.isActive && typeof(member.isActive) !== 'boolean')    {
-        errorMessage.push(`isActive should be boolean`);
+    if(member.is_active && typeof(member.is_active) !== 'boolean')    {
+        errorMessage.push(`is_active should be boolean`);
     }else {
-        member.is_active = member.isActive;
-        delete member.isActive;
+        member.is_active = member.is_active;
+        delete member.is_active;
     }
     if(!member.name && !member.id)  {
         errorMessage.push('Name is mandatory');
@@ -20,12 +20,12 @@ function validateMembers(member: Partial<IMember>) {
         errorMessage.push('Email is mandatory');
     }
     else if(member.email && !isValidMail(member.email))   errorMessage.push( 'Please Enter valid mail id')
-    if(!member.userName && !member.id)  {
-         errorMessage.push('userName is mandatory');
+    if(!member.user_name && !member.id)  {
+         errorMessage.push('user_name is mandatory');
     }
-    if(member.userName) {
-        member.user_name = member.userName
-        delete member.userName
+    if(member.user_name) {
+        member.user_name = member.user_name
+        delete member.user_name
     }
     return errorMessage;
 }
@@ -34,12 +34,14 @@ export async function createMemebers(members: IMember) {
     
     const errorMessage = validateMembers(members);
     if(errorMessage.length){
+
         throw {
             message: errorMessage,
             status: 409
         }
     }
     const {data, error} = await createMemeber(members); 
+    console.log(44, data, error)
     if(error) {
         throw {
             message: `Internal Server Error`,

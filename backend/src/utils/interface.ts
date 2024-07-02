@@ -1,8 +1,8 @@
 export interface IMember {
     name: string,
     id: number,
-    isActive: boolean,
-    userName: string,
+    is_active: boolean,
+    user_name: string,
     email: string, 
     avatar: string, 
     role: string, 
