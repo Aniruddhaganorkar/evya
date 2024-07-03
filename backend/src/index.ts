@@ -17,7 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //     methods: ['POST', 'PUT', 'GET', 'DELETE'],
 //     credential: true
 // }));
-app.use(cors());
+app.use(cors({
+  origin: 'https://evya-frontend.vercel.app'
+}));
+// app.use(cors());
 app.use(helmet()); // Add security headers
 
 // Routes
