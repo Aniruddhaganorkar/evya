@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = {
   origin: 'https://evya-frontend.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  // allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
 
@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
    next();
 })
-app.use(cors());
+app.use(cors(corsOptions ));
 // app.options('*', cors(corsOptions)); 
 // app.use(cors());
 app.use(helmet()); // Add security headers
