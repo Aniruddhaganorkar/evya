@@ -29,7 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors(corsOptions));
+app.use(cors({ origin: '*' }));
 // app.options('*', cors(corsOptions)); 
 // app.use(cors());
 app.use(helmet()); // Add security headers
