@@ -12,14 +12,23 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cors({
-//     origin: ['https://evya-frontend.vercel.app'],
-//     methods: ['POST', 'PUT', 'GET', 'DELETE'],
-//     credential: true
-// }));
 app.use(cors({
-  origin: 'https://evya-frontend.vercel.app'
+    origin: ['https://evya-frontend.vercel.app'],
+    methods: ['POST', 'PUT', 'GET', 'DELETE'],
+    credential: true
 }));
+app.options('*', cors({
+  origin: 'https://evya-frontend.vercel.app',
+  methods: ['POST', 'PUT', 'GET', 'DELETE'],
+  credentials: true
+}));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://evya-frontend.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
+
 // app.use(cors());
 app.use(helmet()); // Add security headers
 
