@@ -12,12 +12,11 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-// app.use(cors({
-//     origin: ['https://deploy-mern-1whq.vercel.app'],
-//     methods: ['POST', 'PUT', 'GET', 'DELETE'],
-//     credential: true
-// }));
+app.use(cors({
+    origin: ['https://evya-frontend.vercel.app'],
+    methods: ['POST', 'PUT', 'GET', 'DELETE'],
+    credential: true
+}));
 app.use(helmet()); // Add security headers
 
 // Routes
