@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
    next();
 })
 app.use(cors(corsOptions ));
-// app.options('*', cors(corsOptions)); 
+app.options('*', cors(corsOptions)); 
 // app.use(cors());
 app.use(helmet()); // Add security headers
 
