@@ -67,6 +67,7 @@ const TeamTable = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
       });
       if (!response.ok) throw new Error('Failed to fetch data');
       const data = await response.json();
@@ -103,6 +104,7 @@ const TeamTable = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
       });
       if (!response.ok) throw new Error('Failed to delete member');
       // Refetch members after deletion
@@ -120,6 +122,7 @@ const TeamTable = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ members: selectedMembers }),
       });
       if (!response.ok) throw new Error('Failed to delete members');
@@ -147,6 +150,7 @@ const TeamTable = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify(updatedUser)
     });
     setShowToast(true);
